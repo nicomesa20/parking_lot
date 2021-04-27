@@ -1,0 +1,10 @@
+{
+  "appId": "com.example.app",
+  "appName": "parking-lot",
+  "webDir": "www",
+  "npmClient": "npm",
+  "server": {
+    "url": "http://192.168.0.13:8101",
+    "cleartext": true
+  }
+}

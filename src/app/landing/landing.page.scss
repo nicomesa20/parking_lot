@@ -1,0 +1,12 @@
+.landing {
+    &-logo {
+        width: min(50%, 200px);
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 25vh;
+    }
+
+    &-legend {
+        margin-bottom: 67px;
+    }
+}

@@ -1,0 +1,26 @@
+.register {
+    &-logo {
+        width: min(50%, 200px);
+        margin-top: 2rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    &-legend {
+        margin-bottom: 3rem;
+    }
+
+    ion-item {
+        margin-bottom: 1rem;
+        border-radius: 50px;
+    }
+
+    form {
+        margin-bottom: 1rem;
+    }
+
+    .login-link {
+        color: var(--ion-color-light-secondary);
+        font-weight: bold;
+    }
+}

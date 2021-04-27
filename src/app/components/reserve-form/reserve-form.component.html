@@ -1,0 +1,38 @@
+<ion-header translucent class="ion-no-border" color="light-gray">
+  <ion-toolbar color="light-gray">
+    <ion-buttons slot="end">
+      <ion-button class="ion-margin close-btn" (click)="close()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding" color="light-gray" fullscreen>
+  <h1 class="reserve-legend ion-text-center">RESERVA</h1>
+  <form class="reserve-form">
+    <ion-item lines="none" class="reserve-input">
+      <ion-input type="text" placeholder="Hora de ingreso"></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="reserve-input">
+      <ion-input type="text" placeholder="Hora de salida"></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="reserve-input">
+      <ion-label>Piso</ion-label>
+      <ion-select placeholder="Elige">
+        <ion-select-option value="f">Female</ion-select-option>
+        <ion-select-option value="m">Male</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item lines="none" class="reserve-input">
+      <ion-label>Parqueadero</ion-label>
+      <ion-select placeholder="Elige">
+        <ion-select-option value="f">Female</ion-select-option>
+        <ion-select-option value="m">Male</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button [disabled]="reserveForm.invalid" shape="round" expand="full" color="primary" class="landing-cta"
+      routerLink="/reserve">
+      Confirmar
+    </ion-button>
+  </form>
+</ion-content>

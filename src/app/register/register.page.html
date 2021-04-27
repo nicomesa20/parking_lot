@@ -1,0 +1,29 @@
+<ion-content [fullscreen]="true" class="register ion-padding ion-text-center" color="light-gray">
+  <img src="/assets/img/logotipo.png" alt="" class="register-logo">
+  <h1 class="register-legend">REGÍSTRATE</h1>
+  <form class="register-form">
+    <ion-item lines="none" class="register-input">
+      <ion-input type="text" placeholder="Nombre completo"></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="register-input">
+      <ion-input type="text" placeholder="Número de documento"></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="register-input">
+      <ion-input type="text" placeholder="Número de placa"></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="register-input">
+      <ion-input type="email" placeholder="Email"></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="register-input">
+      <ion-input type="password" placeholder="Contraseña"></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="register-input">
+      <ion-input type="password" placeholder="Confirmar contraseña"></ion-input>
+    </ion-item>
+    <ion-button [disabled]="registerForm.invalid" shape="round" expand="full" color="primary" class="landing-cta"
+      routerLink="/register">
+      Régistrate
+    </ion-button>
+  </form>
+  <p>¿Ya tienes una cuenta? <a routerLink="/login" class="login-link">Inicia sesión</a></p>
+</ion-content>
