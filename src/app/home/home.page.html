@@ -27,11 +27,11 @@
     <ion-item lines="none" class="home-input shadow">
       <ion-input formControlName="number_plate" type="text" placeholder="Número de placa"></ion-input>
     </ion-item>
-    <ion-button [disabled]="reserveForm.invalid" shape="round" expand="full" class="primary-btn">
+    <ion-button [disabled]="reserveForm.invalid" shape="round" expand="full" class="primary-btn form-btn">
       Parquear
     </ion-button>
-    <ion-button [disabled]="reserveForm.invalid" shape="round" expand="full" fill="outline" class="secondary-btn"
-      (click)="generateReserve(reserveForm.value)">
+    <ion-button [disabled]="reserveForm.invalid" shape="round" expand="full" fill="outline"
+      class="secondary-btn form-btn" (click)="generateReserve(reserveForm.value)">
       Reservar
     </ion-button>
   </form>

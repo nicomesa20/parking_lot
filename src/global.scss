@@ -40,6 +40,10 @@ ion-button, ion-menu-button {
     --box-shadow: var(--ion-box-shadow);
 }
 
+.form-btn {
+    --padding: 6px 0;
+}
+
 ion-button {
     font-weight: 700;
     --padding-top: 1rem;
@@ -61,6 +65,10 @@ ion-button {
 h1 {
     font-size: 1.5rem;
     font-weight: bold;
+}
+
+h2 {
+    font-size: 1.3rem;
 }
 
 A {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IonRouterOutlet, ModalController, NavController } from '@ionic/angular';
+import { IonRouterOutlet, MenuController, ModalController, NavController } from '@ionic/angular';
 import { ReserveFormComponent } from '../components/reserve-form/reserve-form.component';
 import { ReserveService } from '../services/reserve.service';
 import { ToastService } from '../services/toast.service';
@@ -22,9 +22,10 @@ export class HomePage implements OnInit {
     private routerOutlet: IonRouterOutlet,
     private router: NavController,
     private toastService: ToastService,
-    private reserveService: ReserveService
+    private reserveService: ReserveService,
+    private menu: MenuController
   ) {
-
+    this.menu.enable(true);
   }
 
   ngOnInit() {

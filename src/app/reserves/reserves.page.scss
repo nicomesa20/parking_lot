@@ -1,0 +1,82 @@
+ion-header {
+    padding: 0.5rem;
+}
+
+.menu-btn {
+    width: 60px;
+    height: 60px;
+    --background: var(--ion-color-primary);
+    --border-radius: 1rem;
+}
+
+.reserves {
+    &-legend {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .reserve {
+        position: relative;
+        background-color: var(--ion-color-secondary);
+        color: white;
+        
+        ion-card-content {
+            display: flex;
+            font-size: 1.2rem;
+
+            .reserve-img-container {
+                flex: 2;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin-right: 1rem;
+                padding: 1rem;
+                background-color: white;
+                border-radius: 20px;
+                color: var(--ion-color-secondary);
+                font-weight: bold;
+            }
+
+            .reserve-info {
+                flex: 4;
+                font-size: 1.2rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                
+                .reserve-status {
+                    width: fit-content;
+                    margin-bottom: 0.5rem;
+                    padding: 0.3rem 1.5rem;
+                    border-radius: 20px;
+
+                    &.warning {
+                        background-color: var(--ion-color-primary);
+                    }
+                    &.success {
+                        background-color: var(--ion-color-success);
+                    }
+                    &.blue {
+                        background-color: #1F8EF5;
+                    }
+                }
+                .reserve-buttons {
+                    position: absolute;
+                    right: 7px;
+                    bottom: -4px;
+                    font-size: 2rem;
+
+
+                    .edit-btn {
+                        color: var(--ion-color-primary);
+                    }
+
+                    .delete-btn {
+                        color: var(--ion-color-danger);
+                    }
+                }
+            }
+        }
+    }
+}

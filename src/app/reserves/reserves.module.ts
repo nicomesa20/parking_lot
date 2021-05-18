@@ -5,16 +5,20 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ReservesPageRoutingModule } from './reserves-routing.module';
-
 import { ReservesPage } from './reserves.page';
+
+import { QRCodeModule } from 'angularx-qrcode'
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ReservesPageRoutingModule
+    ReservesPageRoutingModule,
+    QRCodeModule,
+    ComponentsModule
   ],
   declarations: [ReservesPage]
 })
-export class ReservesPageModule {}
+export class ReservesPageModule { }

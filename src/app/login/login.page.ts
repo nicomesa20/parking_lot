@@ -28,7 +28,6 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    this.router.navigateForward('')
   }
 
   onLogin() {

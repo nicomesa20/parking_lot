@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
+import { QRCodeModule } from 'angularx-qrcode'
 
 @NgModule({
   declarations: [
@@ -26,12 +26,13 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    QRCodeModule
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     BarcodeScanner,
-    NativeStorage,
+    NativeStorage
   ],
   bootstrap: [
     AppComponent
