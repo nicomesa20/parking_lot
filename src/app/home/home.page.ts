@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IonRouterOutlet, MenuController, ModalController, NavController } from '@ionic/angular';
 import { ReserveFormComponent } from '../components/reserve-form/reserve-form.component';
+import { User } from '../model/user';
 import { ReserveService } from '../services/reserve.service';
 import { ToastService } from '../services/toast.service';
+import { UserService } from '../services/user.service';
+import { observeAuthService } from '../utils/services/observeAuth.service';
 
 @Component({
   selector: 'app-home',
@@ -12,8 +15,11 @@ import { ToastService } from '../services/toast.service';
 })
 export class HomePage implements OnInit {
 
+  userId : number = this.observeAuth.getItem('user').id
+  user: User
+
   reserveForm: FormGroup = new FormGroup({
-    vehicle_type: new FormControl('car', Validators.required),
+    vehicle_type: new FormControl('auto', Validators.required),
     number_plate: new FormControl('', Validators.required)
   })
 
@@ -23,12 +29,18 @@ export class HomePage implements OnInit {
     private router: NavController,
     private toastService: ToastService,
     private reserveService: ReserveService,
-    private menu: MenuController
+    private menu: MenuController,
+    private observeAuth: observeAuthService,
+    private userService: UserService
   ) {
     this.menu.enable(true);
   }
 
   ngOnInit() {
+    this.userService.get(this.userId).subscribe(user => {
+      this.user = user
+      this.reserveForm.get('number_plate').patchValue(this.user.number_plate)
+    })
   }
 
   async generateReserve(reserveInfo) {
@@ -45,7 +57,7 @@ export class HomePage implements OnInit {
   }
 
   park(reserveInfo) {
-    this.reserveService.add(reserveInfo).subscribe(data => {
+    this.reserveService.add(reserveInfo).subscribe(_ => {
       this.toastService.presentToast('Reservación generada con éxito', 'success')
       this.router.navigateForward('reserves')
     })

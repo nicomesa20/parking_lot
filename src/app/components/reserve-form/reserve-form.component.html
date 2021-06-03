@@ -1,28 +1,19 @@
 <div class="reserve ion-padding">
   <h1 class="reserve-legend ion-text-center">RESERVA</h1>
-  <form class="reserve-form">
+  <form [formGroup]="reserveForm" class="reserve-form">
     <ion-item lines="none" class="reserve-input">
-      <ion-input type="text" placeholder="Hora de ingreso"></ion-input>
+      <ion-datetime [value]="today" displayFormat="DD/MM hh:mm a" formControlName="initial_hour" placeholder="Fecha de nacimiento"></ion-datetime>
     </ion-item>
     <ion-item lines="none" class="reserve-input">
-      <ion-input type="text" placeholder="Hora de salida"></ion-input>
+      <ion-datetime [value]="today" displayFormat="DD/MM hh:mm a" formControlName="final_hour" placeholder="Fecha de nacimiento"></ion-datetime>
     </ion-item>
     <ion-item lines="none" class="reserve-input">
-      <ion-label>Piso</ion-label>
-      <ion-select placeholder="Elige">
-        <ion-select-option value="f">Female</ion-select-option>
-        <ion-select-option value="m">Male</ion-select-option>
+      <ion-label>Estacionamiento</ion-label>
+      <ion-select formControlName="slot" placeholder="Elige">
+        <ion-select-option *ngFor="let slot of slotsList" [value]="slot.id">{{slot.place_code}}</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-item lines="none" class="reserve-input">
-      <ion-label>Parqueadero</ion-label>
-      <ion-select placeholder="Elige">
-        <ion-select-option value="f">Female</ion-select-option>
-        <ion-select-option value="m">Male</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-button [disabled]="reserveForm.invalid" shape="round" expand="full" color="primary" class="landing-cta"
-      routerLink="/reserve">
+    <ion-button (click)="createReservation(reserveForm.value)" [disabled]="reserveForm.invalid" shape="round" expand="full" color="primary" class="landing-cta">
       Confirmar
     </ion-button>
   </form>

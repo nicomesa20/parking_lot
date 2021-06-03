@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API: 'https://api.com'
+  API: 'https://parkinglot-back.herokuapp.com/api/'
 };
 
 /*

@@ -18,7 +18,7 @@ export class AuthInterceptor implements HttpInterceptor {
   ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const authToken = localStorage.getItem('accessToken')
+    const authToken = JSON.parse(localStorage.getItem('user')).token
     let authReq = req
     if (authToken) {
       authReq = req.clone({ headers: req.headers.set('Authorization', `Bearer ${authToken}`) });
@@ -51,7 +51,7 @@ export class AuthInterceptor implements HttpInterceptor {
           break
         }
         default: {
-          console.log(err.error.detailed);
+          this.alertService.message('Error', 'danger', err.error?.detailed)
           break
         }
       }

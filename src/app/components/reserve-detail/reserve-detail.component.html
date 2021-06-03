@@ -1,14 +1,15 @@
 <div class="reserve ion-padding" color="light-gray">
   <h1 class="reserve-legend ion-text-center">Acerca el código QR al lector</h1>
   <div class="qr-container">
-    <qrcode [qrdata]="'Your data'" [width]="256" [errorCorrectionLevel]="'M'" [elementType]="'svg'"></qrcode>
+    <qrcode [qrdata]="reserveInfoString" [width]="256" [errorCorrectionLevel]="'M'" [elementType]="'svg'"></qrcode>
   </div>
   <div class="reserve-detail ion-text-center">
     <h2>Detalles</h2>
-    <div>Tipo de vehículo: Automovil</div>
-    <div>Placa: IDZ 672</div>
-    <div>Precio: $2.500/h</div>
-    <div>Hora de ingreso: 1:30pm</div>
+    <div>Tipo de vehículo: {{dicVehicle[reserveInfo.vehicle_type]}}</div>
+    <div>Placa: {{reserveInfo.number_plate}}</div>
+    <div>Precio: {{ reserveInfo.vehicle_type == 'auto' ? '$2.500/h' : '$1.000/h'}}</div>
+    <div>Hora de ingreso: {{reserveInfo.initial_hour | date: 'shortTime'}}</div>
+    <div *ngIf="reserveInfo.final_hour">Hora de salida: {{reserveInfo.final_hour | date: 'shortTime'}}</div>
   </div>
   <ion-button (click)="close()" shape="round" expand="full" color="primary" class="form-btn" routerLink="login">
     Continuar

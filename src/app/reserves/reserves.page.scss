@@ -17,6 +17,7 @@ ion-header {
 
     .reserve {
         position: relative;
+        margin-bottom: 1rem;
         background-color: var(--ion-color-secondary);
         color: white;
         
@@ -61,6 +62,11 @@ ion-header {
                         background-color: #1F8EF5;
                     }
                 }
+
+                .reserve-schedule {
+                    font-size: 1.1rem;
+                }
+                
                 .reserve-buttons {
                     position: absolute;
                     right: 7px;

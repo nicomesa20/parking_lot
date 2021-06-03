@@ -11,5 +11,5 @@ export class ReserveService extends API<any> {
     super(http);
   }
 
-  protected URL = `${this.URL_API}user`;
+  protected URL = `${this.URL_API}reservation`;
 }

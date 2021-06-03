@@ -1,15 +1,15 @@
 <ion-content [fullscreen]="true" class="login ion-padding ion-text-center" color="light-gray">
   <img src="/assets/img/logotipo.png" alt="" class="login-logo">
   <h1 class="login-legend">Inicia Sesión</h1>
-  <form class="register-form">
+  <form [formGroup]="loginForm" class="register-form">
     <ion-item lines="none" class="register-input">
-      <ion-input type="text" placeholder="Email"></ion-input>
+      <ion-input formControlName="user" type="text" placeholder="Email"></ion-input>
     </ion-item>
     <ion-item lines="none" class="register-input">
-      <ion-input type="text" placeholder="Contraseña"></ion-input>
+      <ion-input formControlName="password" type="password" placeholder="Contraseña"></ion-input>
     </ion-item>
-    <ion-button [disabled]="loginForm.invalid" (click)="onLogin() " shape="round" expand="full" color="primary"
-      class="landing-cta form-btn" routerLink="/register">
+    <ion-button [disabled]="loginForm.invalid" (click)="onLogin(loginForm.value) " shape="round" expand="full"
+      color="primary" class="landing-cta form-btn">
       Login
     </ion-button>
   </form>

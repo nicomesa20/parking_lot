@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 
 import { MenuController, NavController } from '@ionic/angular';
@@ -7,6 +7,9 @@ import { MenuController, NavController } from '@ionic/angular';
 import { observeAuthService } from '../utils/services/observeAuth.service';
 import { AuthService } from '../services/auth.service';
 import { User } from 'src/app/model/user';
+import { RegisterReq } from '../model/register-req';
+import { AuthReq } from '../model/auth-req';
+import { CustomValidators } from '../utils/validators';
 
 @Component({
   selector: 'app-register',
@@ -15,21 +18,27 @@ import { User } from 'src/app/model/user';
 })
 export class RegisterPage implements OnInit {
 
-  registerForm: FormGroup = new FormGroup({
-    name: new FormControl('', Validators.required),
-    last_name: new FormControl('', Validators.required),
-    number_plate: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
-    password: new FormControl('', Validators.required)
+  registerForm: FormGroup = this.fb.group({
+    name: ['', Validators.required],
+    gender: ['', Validators.required],
+    birthdate: ['', Validators.required],
+    cellphone: ['', Validators.required],
+    number_plate: ['', Validators.required],
+    document: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', Validators.required],
+    confirm_password: ['', Validators.required]
+  }, {
+    validators: CustomValidators.matchPassword
   })
-  confirmPassowrd: string
 
   constructor(
     private userService: UserService,
     private observeAuth: observeAuthService,
     private menu: MenuController,
     private router: NavController,
-    private authService: AuthService
+    private authService: AuthService,
+    private fb: FormBuilder
   ) {
     this.menu.enable(false);
   }
@@ -38,11 +47,15 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
 
-  onRegister() {
+  onRegister(value: RegisterReq) {
+    delete value['confirm_password']
+    value.birthdate = value.birthdate.slice(0, value.birthdate.indexOf('T'))
     this.userService.add(this.registerForm.value).subscribe((data: User) => {
-      let body: any = {
-        user_name: this.registerForm.get('email').value,
-        password: this.registerForm.get('password').value
+      let body: AuthReq = {
+        user: this.registerForm.get('email').value,
+        password: this.registerForm.get('password').value,
+        type: 'user',
+        keep_logged_in: true
       }
       this.authService.add(body).subscribe(user => {
         this.observeAuth.setItem('user', user)

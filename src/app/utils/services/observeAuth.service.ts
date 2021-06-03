@@ -12,7 +12,6 @@ export class observeAuthService {
   private storageSub = new Subject<boolean>();
 
   constructor(
-    private nativeStorage: NativeStorage
   ) { }
 
   /**
@@ -23,7 +22,7 @@ export class observeAuthService {
   }
 
   setItem(key: string, data: any) {
-    this.nativeStorage.setItem(key, data)
+    localStorage.setItem(key, JSON.stringify(data))
     this.storageSub.next(true);
   }
 
@@ -32,9 +31,7 @@ export class observeAuthService {
    * @param key is a string for example 'token', this key is the one that is going to get
    */
   getItem(key: string) {
-    this.nativeStorage.getItem(key).then(
-      data => { return data }
-    )
+    return JSON.parse(localStorage.getItem(key))
   }
 
   /**
@@ -42,12 +39,12 @@ export class observeAuthService {
    * @param key is a string for example 'token', this key is the one that will be removed
    */
   removeItem(key) {
-    this.nativeStorage.remove(key)
+    localStorage.remove(key)
     this.storageSub.next(false);
   }
 
   clear() {
-    STORAGE_KEYS.forEach(value => this.nativeStorage.remove(value))
+    STORAGE_KEYS.forEach(value => localStorage.remove(value))
     this.storageSub.next(false)
   }
 

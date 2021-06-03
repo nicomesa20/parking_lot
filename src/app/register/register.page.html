@@ -1,27 +1,40 @@
 <ion-content [fullscreen]="true" class="register ion-padding ion-text-center" color="light-gray">
   <img src="/assets/img/logotipo.png" alt="" class="register-logo">
   <h1 class="register-legend">REGÍSTRATE</h1>
-  <form class="register-form">
+  <form [formGroup]="registerForm" class="register-form">
     <ion-item lines="none" class="register-input">
-      <ion-input type="text" placeholder="Nombre completo"></ion-input>
+      <ion-input formControlName="name" type="text" placeholder="Nombre completo"></ion-input>
     </ion-item>
     <ion-item lines="none" class="register-input">
-      <ion-input type="text" placeholder="Número de documento"></ion-input>
+      <ion-select formControlName="gender" placeholder="Género" displayFormat="YYYY-MM-DD">
+        <ion-select-option value="F">Mujer</ion-select-option>
+        <ion-select-option value="M">Hombre</ion-select-option>
+        <ion-select-option value="U" >Otro</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-item lines="none" class="register-input">
-      <ion-input type="text" placeholder="Número de placa"></ion-input>
+      <ion-datetime displayFormat="DD MM YYYY" formControlName="birthdate" placeholder="Fecha de nacimiento"></ion-datetime>
     </ion-item>
     <ion-item lines="none" class="register-input">
-      <ion-input type="email" placeholder="Email"></ion-input>
+      <ion-input formControlName="cellphone" type="cellphone" placeholder="Celular"></ion-input>
     </ion-item>
     <ion-item lines="none" class="register-input">
-      <ion-input type="password" placeholder="Contraseña"></ion-input>
+      <ion-input formControlName="document" type="document" placeholder="Número de documento"></ion-input>
     </ion-item>
     <ion-item lines="none" class="register-input">
-      <ion-input type="password" placeholder="Confirmar contraseña"></ion-input>
+      <ion-input formControlName="number_plate" type="text" placeholder="Número de placa"></ion-input>
     </ion-item>
-    <ion-button [disabled]="registerForm.invalid" shape="round" expand="full" color="primary"
-      class="landing-cta form-btn" routerLink="/register">
+    <ion-item lines="none" class="register-input">
+      <ion-input formControlName="email" type="email" placeholder="Email"></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="register-input">
+      <ion-input formControlName="password" type="password" placeholder="Contraseña"></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="register-input">
+      <ion-input formControlName="confirm_password" type="password" placeholder="Confirmar contraseña"></ion-input>
+    </ion-item>
+    <ion-button  (click)="onRegister(registerForm.value)"[disabled]="registerForm.invalid" shape="round" expand="full" color="primary"
+      class="landing-cta form-btn">
       Régistrate
     </ion-button>
   </form>

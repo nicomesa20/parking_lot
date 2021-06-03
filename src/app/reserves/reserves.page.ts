@@ -25,6 +25,7 @@ export class ReservesPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loadReserves()
   }
 
   async showReserve(reserveInfo: Reserve) {
@@ -38,6 +39,14 @@ export class ReservesPage implements OnInit {
       mode: 'ios',
     });
     return await modal.present();
+  }
+
+  loadReserves() {
+    this.reserveService.list().subscribe(reserves => {
+      this.reserves = reserves['data']
+      console.log(reserves);
+      
+    })
   }
 
   async editReserve(reserveInfo: Reserve) {

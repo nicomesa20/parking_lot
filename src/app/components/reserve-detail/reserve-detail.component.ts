@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Reserve } from 'src/app/model/reserve';
 
 @Component({
   selector: 'app-reserve-detail',
@@ -7,14 +8,21 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./reserve-detail.component.scss'],
 })
 export class ReserveDetailComponent implements OnInit {
+  
+  @Input() reserveInfo: Reserve
+  reserveInfoString
 
-  data = 'tescor tiene el pito chiquito'
+  dicVehicle = {
+    auto: 'Automóvil',
+    moto: 'Motocicleta',
+  }
 
   constructor(
     private modalCtrl: ModalController,
   ) { }
 
   ngOnInit() {
+    this.reserveInfoString = JSON.stringify(this.reserveInfo)
   }
 
   close() {

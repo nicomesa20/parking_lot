@@ -16,6 +16,7 @@ import { environment as env } from 'src/environments/environment';
 export abstract class API<T> {
 
     protected URL_API: string = env.API + 'v1/';
+
     protected abstract URL: string;
 
     constructor(protected http: HttpClient) {

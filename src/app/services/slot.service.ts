@@ -5,11 +5,12 @@ import { API } from '../utils/api';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService extends API<any> {
+export class SlotService extends API<any> {
 
   constructor(http: HttpClient) {
     super(http);
   }
 
-  protected URL = `${this.URL_API}user`;
+  protected URL = `${this.URL_API}parking_slot`;
 }
+

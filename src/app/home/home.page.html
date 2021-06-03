@@ -8,18 +8,17 @@
     <ion-title class="ion-margin-start">Bienvenido Nicolas Mesa</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content fullscreen class="home ion-padding" color="light-gray">
   <h1 class="home-legend">Selecciona el tipo de vehiculo</h1>
   <form [formGroup]="reserveForm">
     <div class="home-vehicle-type ion-text-center">
-      <div class="card shadow ion-margin-end" [ngClass]="{'selected': reserveForm.get('vehicle_type').value == 'car'}"
-        (click)="reserveForm.get('vehicle_type').setValue('car')">
+      <div class="card shadow ion-margin-end" [ngClass]="{'selected': reserveForm.get('vehicle_type').value == 'auto'}"
+        (click)="reserveForm.get('vehicle_type').setValue('auto')">
         <img src="/assets/img/car.png">
         <h2>Carro</h2>
       </div>
-      <div class="card shadow" [ngClass]="{'selected': reserveForm.get('vehicle_type').value == 'scooter'}"
-        (click)="reserveForm.get('vehicle_type').setValue('scooter')">
+      <div class="card shadow" [ngClass]="{'selected': reserveForm.get('vehicle_type').value == 'moto'}"
+        (click)="reserveForm.get('vehicle_type').setValue('moto')">
         <img src="/assets/img/scooter.png">
         <h2>Moto</h2>
       </div>
@@ -27,7 +26,7 @@
     <ion-item lines="none" class="home-input shadow">
       <ion-input formControlName="number_plate" type="text" placeholder="Número de placa"></ion-input>
     </ion-item>
-    <ion-button [disabled]="reserveForm.invalid" shape="round" expand="full" class="primary-btn form-btn">
+    <ion-button (click)="park(reserveForm.value)" [disabled]="reserveForm.invalid" shape="round" expand="full" class="primary-btn form-btn">
       Parquear
     </ion-button>
     <ion-button [disabled]="reserveForm.invalid" shape="round" expand="full" fill="outline"
