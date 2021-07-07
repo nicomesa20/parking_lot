@@ -15,7 +15,7 @@ import { observeAuthService } from '../utils/services/observeAuth.service';
 })
 export class HomePage implements OnInit {
 
-  userId : number = this.observeAuth.getItem('user').id
+  userId: number = this.observeAuth.getItem('user').id
   user: User
 
   reserveForm: FormGroup = new FormGroup({

@@ -2,10 +2,12 @@
   <h1 class="reserve-legend ion-text-center">RESERVA</h1>
   <form [formGroup]="reserveForm" class="reserve-form">
     <ion-item lines="none" class="reserve-input">
-      <ion-datetime [value]="today" displayFormat="DD/MM hh:mm a" formControlName="initial_hour" placeholder="Fecha de nacimiento"></ion-datetime>
+      <ion-datetime [value]="today" displayFormat="DD/MM hh:mm a" formControlName="initial_hour"
+        placeholder="Fecha de entrada"></ion-datetime>
     </ion-item>
     <ion-item lines="none" class="reserve-input">
-      <ion-datetime [value]="today" displayFormat="DD/MM hh:mm a" formControlName="final_hour" placeholder="Fecha de nacimiento"></ion-datetime>
+      <ion-datetime [value]="today" displayFormat="DD/MM hh:mm a" formControlName="final_hour"
+        placeholder="Fecha de salida"></ion-datetime>
     </ion-item>
     <ion-item lines="none" class="reserve-input">
       <ion-label>Estacionamiento</ion-label>
@@ -13,7 +15,8 @@
         <ion-select-option *ngFor="let slot of slotsList" [value]="slot.id">{{slot.place_code}}</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-button (click)="createReservation(reserveForm.value)" [disabled]="reserveForm.invalid" shape="round" expand="full" color="primary" class="landing-cta">
+    <ion-button (click)="createReservation(reserveForm.value)" [disabled]="reserveForm.invalid" shape="round"
+      expand="full" color="primary" class="landing-cta">
       Confirmar
     </ion-button>
   </form>

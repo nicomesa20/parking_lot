@@ -6,6 +6,8 @@ import { Reserve } from '../model/reserve';
 import { ReserveService } from '../services/reserve.service';
 import { ToastService } from '../services/toast.service';
 
+
+
 @Component({
   selector: 'app-reserves',
   templateUrl: './reserves.page.html',
@@ -45,7 +47,7 @@ export class ReservesPage implements OnInit {
     this.reserveService.list().subscribe(reserves => {
       this.reserves = reserves['data']
       console.log(reserves);
-      
+
     })
   }
 
@@ -73,6 +75,7 @@ export class ReservesPage implements OnInit {
           handler: () => {
             this.reserveService.remove(id).subscribe(() => {
               this.toastService.presentToast('Reserva eliminada', 'success')
+              this.loadReserves()
             })
           }
         }, {
